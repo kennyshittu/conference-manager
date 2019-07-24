@@ -1,8 +1,14 @@
 package com.binance.api.utils;
 
+import com.binance.api.models.Conference;
+import com.binance.api.models.Event;
 import com.binance.api.models.Talk;
+import com.binance.api.models.Track;
+import com.binance.api.models.TrackSession;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 public class ConferenceUtils {
 
@@ -25,4 +31,36 @@ public class ConferenceUtils {
         long diff = endTime.getTimeInMillis() - startTime.getTimeInMillis();
         return ((diff / 1000) / 60);
     }
+
+    public static String stringifyConferenceResponse (Conference conference) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("Test Output:").append("\n");
+
+        for(Track track : conference.getTracks()){
+            builder.append("Track ").append(track.getTrackId()).append(" :").append("\n");
+            List<TrackSession> trackSessions = track.getTrackSessions();
+
+            // Output the talks into tracks based on the totalTalks and the count of Talks.
+            for (TrackSession trackSession : trackSessions) {
+                for (Event event : trackSession.getEvents()) {
+                    // Print the prepared talk's title for this Track
+                    builder.append(sdf.format(event.getStartTime().getTime()))
+                            .append(" ")
+                            .append(event.getTitle())
+                            .append(" ")
+                            .append(event.getDurationInMinutes())
+                            .append("mins")
+                            .append("\n");
+                }
+            }
+
+            builder.append("\n");
+        }
+
+        return builder.toString();
+    }
+
 }

@@ -24,7 +24,7 @@ public class TrackSession {
     this.remainingDuration -= event.getDurationInMinutes();
   }
 
-  // check if the talk can be accommodated in the current slot.
+  // check if the talk can be accommodated in the current session.
   public boolean hasRoomFor(Talk talk) {
     return remainingDuration >= talk.getMinutes();
   }

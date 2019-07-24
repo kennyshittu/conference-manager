@@ -7,7 +7,7 @@ import com.binance.api.models.Session;
 import com.binance.api.models.Talk;
 import com.binance.api.models.Track;
 import com.binance.api.models.TrackSession;
-import com.binance.api.parser.CsvReader;
+import com.binance.api.utils.CsvReader;
 import com.binance.api.utils.ConferenceUtils;
 import com.binance.api.utils.TalkComparator;
 

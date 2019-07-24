@@ -1,4 +1,4 @@
-package com.binance.api.parser;
+package com.binance.api.utils;
 
 import com.binance.api.models.Talk;
 import com.google.common.collect.Lists;
