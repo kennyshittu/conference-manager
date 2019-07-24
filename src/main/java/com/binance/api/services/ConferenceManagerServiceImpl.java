@@ -17,6 +17,8 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.binance.api.models.FixedEvent.NETWORKING;
+
 public class ConferenceManagerServiceImpl implements ConferenceManagerService {
 
     @Override
@@ -49,12 +51,17 @@ public class ConferenceManagerServiceImpl implements ConferenceManagerService {
 
             // create and fill afternoon session.
             TrackSession afternoonSession = new TrackSession(Session.AFTERNOON);
-            fillTrackSession(afternoonSession, talkList);
+            Calendar nextEventStartTime = fillTrackSession(afternoonSession, talkList);
 
             // create and fill networking session.
             TrackSession networkingSession = new TrackSession(Session.NETWORKING);
-            FixedEvent networking = FixedEvent.NETWORKING;
-            networkingSession.addEvent(new Event(networking.startTime, networking.title, networking.duration));
+
+            // Networking event should not start earlier than startTime and not after otherStartTime
+            if (!nextEventStartTime.getTime().after(NETWORKING.otherStartTime.getTime())) {
+                FixedEvent networking = NETWORKING;
+                Calendar actualStartTime = nextEventStartTime.getTime().before(networking.startTime.getTime()) ? nextEventStartTime : nextEventStartTime;
+                networkingSession.addEvent(new Event(actualStartTime, networking.title, networking.duration));
+            }
 
             // add all the sessions for the day into the track.
             Track track = new Track(++trackId, new ArrayList<>());
@@ -69,7 +76,7 @@ public class ConferenceManagerServiceImpl implements ConferenceManagerService {
         return conference;
     }
 
-    private void fillTrackSession(TrackSession trackSession, List<Talk> talks) {
+    private Calendar fillTrackSession(TrackSession trackSession, List<Talk> talks) {
         // initialize the session start time.
         Calendar currentStartTime = trackSession.getType().startTime;
         for (Iterator<Talk> talksIterator = talks.iterator(); talksIterator.hasNext(); ) {
@@ -83,6 +90,8 @@ public class ConferenceManagerServiceImpl implements ConferenceManagerService {
                 talksIterator.remove();
             }
         }
+
+        return currentStartTime;
     }
 
 }

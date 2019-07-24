@@ -24,5 +24,5 @@ Track 2 :
 03:00 PM Woah 30mins
 03:30 PM Lua for the Masses 30mins
 04:00 PM Rails for Python Developers 5mins
-05:00 PM Networking
+04:05 PM Networking
 
