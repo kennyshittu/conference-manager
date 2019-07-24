@@ -1,0 +1,51 @@
+target
+tmp*
+node_modules
+
+# IDEA
+# ----
+.idea
+.shelf
+*.iml
+/*.ipr
+/*.iws
+/out
+/*/out
+
+# Eclipse
+# -------
+*.classpath
+*.project
+*.settings
+/bin
+/subprojects/*/bin
+atlassian-ide-plugin.xml
+
+# NetBeans
+# --------
+.nb-gradle
+.nb-gradle-properties
+
+# Vim
+# ---
+*.sw[op]
+
+# Emacs
+# -----
+*~
+
+# Textmate
+# --------
+.textmate
+
+# Sublime Text
+# ------------
+*.sublime-*
+
+# jEnv
+# ----
+.java-version
+
+# OS X
+# ----
+.DS_Store
