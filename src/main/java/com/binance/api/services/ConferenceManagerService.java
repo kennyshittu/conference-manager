@@ -5,5 +5,5 @@ import com.binance.api.models.Conference;
 import java.io.InputStream;
 
 public interface ConferenceManagerService {
-  Conference getTracks(InputStream fileInputStream);
+  Conference generateConferenceTracks(InputStream fileInputStream);
 }

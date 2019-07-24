@@ -1,9 +1,5 @@
 package com.binance.api.resources;
 
-import com.binance.api.models.Conference;
-import com.binance.api.models.Event;
-import com.binance.api.models.Track;
-import com.binance.api.models.TrackSession;
 import com.binance.api.services.ConferenceManagerService;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
@@ -35,6 +31,6 @@ public class ConferenceManagerResource {
   @POST
   @Consumes(MediaType.MULTIPART_FORM_DATA)
   public String uploadFile(@FormDataParam("file") InputStream fileInputStream) {
-    return stringifyConferenceResponse(conferenceManagerService.getTracks(fileInputStream));
+    return stringifyConferenceResponse(conferenceManagerService.generateConferenceTracks(fileInputStream));
   }
 }

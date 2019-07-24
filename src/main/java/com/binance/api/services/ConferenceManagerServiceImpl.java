@@ -7,8 +7,8 @@ import com.binance.api.models.Session;
 import com.binance.api.models.Talk;
 import com.binance.api.models.Track;
 import com.binance.api.models.TrackSession;
-import com.binance.api.utils.CsvReader;
 import com.binance.api.utils.ConferenceUtils;
+import com.binance.api.utils.CsvReader;
 import com.binance.api.utils.TalkComparator;
 
 import java.io.InputStream;
@@ -20,7 +20,7 @@ import java.util.List;
 public class ConferenceManagerServiceImpl implements ConferenceManagerService {
 
   @Override
-  public Conference getTracks(InputStream fileInputStream) {
+  public Conference generateConferenceTracks(InputStream fileInputStream) {
     // Get talks
     List<Talk> talks = CsvReader.readCsvFile(fileInputStream);
 
