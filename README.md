@@ -11,3 +11,7 @@ Health Check
 ---
 
 To see your applications health enter url `http://localhost:8081/healthcheck`
+
+Testing:
+
+You can test using the sample_input.csv file it the root directory.
