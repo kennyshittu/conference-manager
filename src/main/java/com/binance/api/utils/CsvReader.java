@@ -56,7 +56,7 @@ public class CsvReader {
         try {
             return Integer.parseInt(minuteString.replaceAll("\\D+", ""));
         } catch (NumberFormatException e) {
-            log.error(String.format("Could extract minutes from string : %s", minuteString), e);
+            log.error(String.format("Could not extract minutes from string : %s", minuteString), e);
             throw e;
         }
     }
