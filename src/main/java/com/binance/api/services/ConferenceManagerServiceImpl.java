@@ -56,7 +56,7 @@ public class ConferenceManagerServiceImpl implements ConferenceManagerService {
       FixedEvent networking = FixedEvent.NETWORKING;
       networkingSession.addEvent(new Event(networking.startTime, networking.title, networking.duration));
 
-      // add all the slots for the day into the track.
+      // add all the sessions for the day into the track.
       Track track = new Track(++trackCount, new ArrayList<>());
       track.addtrackSession(morningSession);
       track.addtrackSession(lunchSession);
@@ -69,14 +69,14 @@ public class ConferenceManagerServiceImpl implements ConferenceManagerService {
     return conference;
   }
 
-  private void fillTrackSession(TrackSession slot, List<Talk> talks) {
-    // initialize the slot start time.
-    Calendar currentStartTime = slot.getType().startTime;
+  private void fillTrackSession(TrackSession trackSession, List<Talk> talks) {
+    // initialize the session start time.
+    Calendar currentStartTime = trackSession.getType().startTime;
     for (Iterator<Talk> talksIterator = talks.iterator(); talksIterator.hasNext();) {
       Talk talk = talksIterator.next();
-      if (slot.hasRoomFor(talk)) {
+      if (trackSession.hasRoomFor(talk)) {
         // add an event to the slot at the currentStartTime calculated.
-        slot.addEvent(new Event(currentStartTime, talk.getTitle(), talk.getMinutes()));
+        trackSession.addEvent(new Event(currentStartTime, talk.getTitle(), talk.getMinutes()));
         // calculate the next start time based on the current start time and current talk duration.
         currentStartTime = ConferenceUtils.getNextStartTime(currentStartTime, talk);
         // remove the talk from the list. This means that the talk has been scheduled in the conference.
