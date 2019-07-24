@@ -2,3 +2,8 @@ logging:
   level: INFO
   loggers:
     com.binance.api: DEBUG
+
+server:
+  type: simple
+  rootPath: /api/v0/*
+  applicationContextPath: /
