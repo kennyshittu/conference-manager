@@ -18,8 +18,8 @@ public class CsvReaderTest {
         List<Talk> talkList = CsvReader.readCsvFile(inputStream);
         Talk talk = talkList.get(0);
 
-        assertThat(talk.getMinutes()).isEqualTo(45);
-        assertThat(talk.getTitle()).isEqualTo("Overdoing it in Python");
-        assertThat(talkList.size()).isEqualTo(18);
+        assertThat(talk.getMinutes()).isEqualTo(60);
+        assertThat(talk.getTitle()).isEqualTo("Writing Fast Tests Against Enterprise Rails");
+        assertThat(talkList.size()).isEqualTo(19);
     }
 }

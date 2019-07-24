@@ -25,6 +25,6 @@ public class ConferenceManagerResourceTest {
 
         String actual = resource.uploadFile(inputStream);
 
-        assertThat(expected).isEqualTo(actual);
+        assertThat(actual).isEqualTo(expected);
     }
 }

@@ -10,6 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.binance.api.models.FixedEvent.LUNCH;
+import static com.binance.api.models.FixedEvent.NETWORKING;
+
 public class ConferenceUtils {
 
     public static Calendar getCalendarTime(int hours, int minutes) {
@@ -32,14 +35,14 @@ public class ConferenceUtils {
         return ((diff / 1000) / 60);
     }
 
-    public static String stringifyConferenceResponse (Conference conference) {
+    public static String stringifyConferenceResponse(Conference conference) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
         StringBuilder builder = new StringBuilder();
 
         builder.append("Test Output:").append("\n");
 
-        for(Track track : conference.getTracks()){
+        for (Track track : conference.getTracks()) {
             builder.append("Track ").append(track.getTrackId()).append(" :").append("\n");
             List<TrackSession> trackSessions = track.getTrackSessions();
 
@@ -49,11 +52,14 @@ public class ConferenceUtils {
                     // Print the prepared talk's title for this Track
                     builder.append(sdf.format(event.getStartTime().getTime()))
                             .append(" ")
-                            .append(event.getTitle())
-                            .append(" ")
-                            .append(event.getDurationInMinutes())
-                            .append("mins")
-                            .append("\n");
+                            .append(event.getTitle());
+                    if (!event.getTitle().equals(LUNCH.title) && !event.getTitle().equals(NETWORKING.title)) {
+                        builder.append(" ")
+                                .append(event.getDurationInMinutes())
+                                .append("mins");
+                    }
+
+                    builder.append("\n");
                 }
             }
 

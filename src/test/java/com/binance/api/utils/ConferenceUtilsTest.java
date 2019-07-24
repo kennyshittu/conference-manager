@@ -21,7 +21,7 @@ public class ConferenceUtilsTest {
 
         Calendar actual = ConferenceUtils.getCalendarTime(10, 0);
 
-        assertThat(expected.getTime().toString()).isEqualTo(actual.getTime().toString());
+        assertThat(actual.getTime().toString()).isEqualTo(expected.getTime().toString());
     }
 
     @Test
@@ -31,14 +31,14 @@ public class ConferenceUtilsTest {
         expected.set(Calendar.MINUTE, 0);
 
         Calendar actual = ConferenceUtils.getNextStartTime(MORNING.startTime, new Talk(60, "test"));
-        assertThat(expected.getTime().toString()).isEqualTo(actual.getTime().toString());
+        assertThat(actual.getTime().toString()).isEqualTo(expected.getTime().toString());
     }
 
     @Test
     public void testGetDiffInMinutes() {
         Long expected = 60L;
         Long actual = ConferenceUtils.getDiffInMinutes(NETWORKING.endTime, NETWORKING.startTime);
-        assertThat(expected).isEqualTo(actual);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -46,6 +46,6 @@ public class ConferenceUtilsTest {
         String expected = exampleStringifiedConference();
         String actual = ConferenceUtils.stringifyConferenceResponse(exampleConference());
 
-        assertThat(expected).isEqualTo(actual);
+        assertThat(actual).isEqualTo(expected);
     }
 }

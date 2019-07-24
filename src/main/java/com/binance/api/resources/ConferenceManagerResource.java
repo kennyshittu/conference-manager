@@ -19,18 +19,18 @@ import static com.binance.api.utils.ConferenceUtils.stringifyConferenceResponse;
 @Singleton
 public class ConferenceManagerResource {
 
-  private ConferenceManagerService conferenceManagerService;
+    private ConferenceManagerService conferenceManagerService;
 
-  @Inject
-  ConferenceManagerResource(ConferenceManagerService conferenceManagerService) {
-    this.conferenceManagerService = conferenceManagerService;
-  }
+    @Inject
+    ConferenceManagerResource(ConferenceManagerService conferenceManagerService) {
+        this.conferenceManagerService = conferenceManagerService;
+    }
 
-  // An endpoint that takes a csv file of talks and return scheduled tracks
-  @Path("upload")
-  @POST
-  @Consumes(MediaType.MULTIPART_FORM_DATA)
-  public String uploadFile(@FormDataParam("file") InputStream fileInputStream) {
-    return stringifyConferenceResponse(conferenceManagerService.generateConferenceTracks(fileInputStream));
-  }
+    // An endpoint that takes a csv file of talks and return scheduled tracks
+    @Path("upload")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public String uploadFile(@FormDataParam("file") InputStream fileInputStream) {
+        return stringifyConferenceResponse(conferenceManagerService.generateConferenceTracks(fileInputStream));
+    }
 }

@@ -8,11 +8,11 @@ import dagger.Provides;
 import javax.inject.Singleton;
 
 @Module
-public class ConferenceManagerModule {
+class ConferenceManagerModule {
 
-  @Provides
-  @Singleton
-  static ConferenceManagerService provideConferenceManagerService() {
-    return new ConferenceManagerServiceImpl();
-  }
+    @Provides
+    @Singleton
+    static ConferenceManagerService provideConferenceManagerService() {
+        return new ConferenceManagerServiceImpl();
+    }
 }

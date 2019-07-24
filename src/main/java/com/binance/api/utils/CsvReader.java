@@ -29,7 +29,7 @@ public class CsvReader {
             List<CSVRecord> csvRecords = csvFileParser.getRecords();
 
             //Read the CSV file records starting from the second record to skip the header
-            for (int i = 1; i < csvRecords.size(); i++) {
+            for (int i = 0; i < csvRecords.size(); i++) {
                 CSVRecord record = csvRecords.get(i);
 
                 String title = record.get(0);

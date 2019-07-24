@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Talk {
-  private int minutes;
-  private String title;
+    private int minutes;
+    private String title;
 }

@@ -9,23 +9,23 @@ import static com.binance.api.utils.ConferenceUtils.getDiffInMinutes;
 
 @Data
 public class TrackSession {
-  private List<Event> events;
-  private int remainingDuration;
-  private Session type;
+    private List<Event> events;
+    private int remainingDuration;
+    private Session type;
 
-  public TrackSession(Session type) {
-    this.events = new ArrayList<>();
-    this.type = type;
-    remainingDuration = getDiffInMinutes(type.endTime, type.startTime).intValue();
-  }
+    public TrackSession(Session type) {
+        this.events = new ArrayList<>();
+        this.type = type;
+        remainingDuration = getDiffInMinutes(type.endTime, type.startTime).intValue();
+    }
 
-  public void addEvent(Event event) {
-    events.add(event);
-    this.remainingDuration -= event.getDurationInMinutes();
-  }
+    public void addEvent(Event event) {
+        events.add(event);
+        this.remainingDuration -= event.getDurationInMinutes();
+    }
 
-  // check if the talk can be accommodated in the current session.
-  public boolean hasRoomFor(Talk talk) {
-    return remainingDuration >= talk.getMinutes();
-  }
+    // check if the talk can be accommodated in the current session.
+    public boolean hasRoomFor(Talk talk) {
+        return remainingDuration >= talk.getMinutes();
+    }
 }

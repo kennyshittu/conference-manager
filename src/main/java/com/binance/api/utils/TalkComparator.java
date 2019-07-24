@@ -8,7 +8,7 @@ public class TalkComparator implements Comparator<Talk> {
 
     @Override
     public int compare(Talk a, Talk b) {
-        if(a.getMinutes() < b.getMinutes()){
+        if (a.getMinutes() < b.getMinutes()) {
             return 1;
         } else {
             return -1;

@@ -8,10 +8,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Track {
-  private int trackId;
-  private List<TrackSession> trackSessions;
+    private int trackId;
+    private List<TrackSession> trackSessions;
 
-  public void addtrackSession(TrackSession trackSession) {
-    this.trackSessions.add(trackSession);
-  }
+    public void addtrackSession(TrackSession trackSession) {
+        this.trackSessions.add(trackSession);
+    }
 }

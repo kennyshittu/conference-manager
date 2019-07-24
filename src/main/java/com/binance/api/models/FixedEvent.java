@@ -8,8 +8,8 @@ import java.util.Calendar;
 @NoArgsConstructor
 public enum FixedEvent {
 
-    LUNCH(ConferenceUtils.getCalendarTime(12, 0), 60, "Lunch Event"),
-    NETWORKING(ConferenceUtils.getCalendarTime(17, 0), 60, "Networking Event");
+    LUNCH(ConferenceUtils.getCalendarTime(12, 0), 60, "Lunch"),
+    NETWORKING(ConferenceUtils.getCalendarTime(17, 0), 60, "Networking");
 
     public Calendar startTime;
     public int duration;

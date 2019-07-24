@@ -7,8 +7,8 @@ import javax.inject.Singleton;
 
 @Singleton
 @Component(modules = {ConferenceManagerModule.class})
-public interface ConferenceManagerComponent  {
+public interface ConferenceManagerComponent {
 
-  ConferenceManagerResource provideConferenceManagerResource();
+    ConferenceManagerResource provideConferenceManagerResource();
 
 }
